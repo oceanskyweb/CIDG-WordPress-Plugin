@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="60fa5b56-40fd-415c-af62-bf9328ed84b8" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="sfbs-base.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/sfbs-base.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="164" column="39" lean-forward="false" selection-start-line="164" selection-start-column="39" selection-end-line="164" selection-end-column="67" />
+              <folding>
+                <element signature="e#2715#2771#0#PHP" expanded="false" />
+                <element signature="e#2792#3409#0#PHP" expanded="false" />
+                <element signature="e#3430#8846#0#PHP" expanded="false" />
+                <element signature="e#8867#9630#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="woo-strikeforce-blocksafe.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/woo-strikeforce-blocksafe.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="27">
+              <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sfbs-license-management.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/sfbs-license-management.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="328">
+              <caret line="159" column="117" lean-forward="false" selection-start-line="159" selection-start-column="117" selection-end-line="159" selection-end-column="117" />
+              <folding>
+                <element signature="e#2895#3824#0#PHP" expanded="false" />
+                <element signature="e#3915#4819#0#PHP" expanded="false" />
+                <element signature="e#4876#5792#0#PHP" expanded="false" />
+                <element signature="n#suspend_subscription_licenses#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sfbs-debug.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/sfbs-debug.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+              <folding>
+                <element signature="e#105#137#0#PHP" expanded="false" />
+                <element signature="e#541#613#0#PHP" expanded="false" />
+                <element signature="e#906#2298#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>subscription_note</find>
+      <find>'license_suspension_procedure</find>
+      <find>add_action('license_suspension_procedure</find>
+      <find>emailMessage</find>
+      <find>shopUrl</find>
+      <find>message</find>
+      <find>sub</find>
+      <find>$subscription</find>
+      <find>get_item_for_subscription</find>
+      <find>action_list_machines</find>
+      <find>processTProcess Type</find>
+      <find>process_order_item_for_subscription</find>
+      <find>Final notice of a problem</find>
+      <find>day</find>
+      <find>hours</find>
+      <find>we tha</find>
+      <find>we</find>
+      <find>action_subscription_license_key</find>
+      <find>add_o</find>
+      <find>-1</find>
+      <find>$item['License']</find>
+      <find>Process Type</find>
+      <find>1</find>
+      <find>notice of cancelation</find>
+      <find>+1</find>
+      <find>final cancelation warning</find>
+      <find>suspend_subscription_licenses</find>
+      <find>wp_mail</find>
+      <find>post_email</find>
+      <find>license_suspension_procedure</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>order-&gt;get_id()</replace>
+      <replace>write_log</replace>
+      <replace>-&gt;get_id()</replace>
+      <replace>-&gt;get_billing_last_name();</replace>
+      <replace>-&gt;wc_get_order( $order_id )</replace>
+      <replace>$subscription-&gt;get_parent()-&gt;get_id()</replace>
+      <replace>-&gt;get_billing_email()</replace>
+      <replace>-&gt;get_billing_first_name()</replace>
+      <replace>base.php</replace>
+      <replace>product-name</replace>
+      <replace>ACCOUNT_PREFIX</replace>
+      <replace>PLUGIN_PREFIX</replace>
+      <replace>PLUGIN_PREFIX . '-</replace>
+      <replace>function custom_</replace>
+      <replace>'custom_</replace>
+      <replace>PLUGIN_PREFIX . &quot;_</replace>
+      <replace>strikeforce_</replace>
+      <replace>for=&quot;&lt;?php echo PLUGIN_PREFIX; ?&gt;_</replace>
+      <replace>action_</replace>
+      <replace>name=&quot;&lt;?php echo PLUGIN_PREFIX; ?&gt;_</replace>
+      <replace>='&quot; . PLUGIN_PREFIX . &quot;-</replace>
+      <replace>blocksafe_</replace>
+      <replace>[&lt;?php echo $name; ?&gt;]</replace>
+      <replace>$data[</replace>
+      <replace />
+      <replace>message</replace>
+      <replace>site</replace>
+      <replace>shop</replace>
+      <replace>$sub</replace>
+      <replace>msg</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins\woocommerce</dir>
+      <dir>S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins\woocommerce-strikeforcev</dir>
+      <dir>S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins\woocommerce-strikeforce</dir>
+      <dir>S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins\woocommerce-strikeforce\includes\thirdParty\httpful_old.phar\Httpful</dir>
+      <dir>S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins\woocommerce-strikeforce\</dir>
+      <dir>S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins\woo-strikeforce-blocksafe\includes</dir>
+      <dir>S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins</dir>
+      <dir>S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins\woo-strikeforce-blocksafe</dir>
+    </dirStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/includes/sf-actions.php" />
+        <option value="$PROJECT_DIR$/includes/wc-action-hooks.php" />
+        <option value="$PROJECT_DIR$/includes/sf-license-management.php" />
+        <option value="$PROJECT_DIR$/woocommerce-blocksafe-integration.php" />
+        <option value="$PROJECT_DIR$/includes/sf-options.php" />
+        <option value="$PROJECT_DIR$/includes/sf-guarded-id-api.php" />
+        <option value="$PROJECT_DIR$/woocommerce-strikeforce-integration.php" />
+        <option value="$PROJECT_DIR$/includes/sf-debug-functions.php" />
+        <option value="$PROJECT_DIR$/includes/bs-options.php" />
+        <option value="$PROJECT_DIR$/page_templates/provisioned-machine-loop-per-active.php" />
+        <option value="$PROJECT_DIR$/includes/options.php" />
+        <option value="$PROJECT_DIR$/includes/woo-admin-pannel.php" />
+        <option value="$PROJECT_DIR$/includes/actions.php" />
+        <option value="$PROJECT_DIR$/includes/guarded-api.php" />
+        <option value="$PROJECT_DIR$/includes/base.php" />
+        <option value="$PROJECT_DIR$/includes/debug.php" />
+        <option value="$PROJECT_DIR$/includes/license-management.php" />
+        <option value="$PROJECT_DIR$/includes/sfbs-wc-action-hooks.php" />
+        <option value="$PROJECT_DIR$/includes/sfbs-mail.php" />
+        <option value="$PROJECT_DIR$/includes/sfbs-wc-new-action-hooks.php" />
+        <option value="$PROJECT_DIR$/includes/sfbs-hooks.php" />
+        <option value="$PROJECT_DIR$/includes/sfbs-guarded.php" />
+        <option value="$PROJECT_DIR$/includes/sfbs-functions.php" />
+        <option value="$PROJECT_DIR$/email_templates/payment-failed-notice.html" />
+        <option value="$PROJECT_DIR$/includes/sfbs-guarded-api.php" />
+        <option value="$PROJECT_DIR$/includes/sfbs-debug.php" />
+        <option value="$PROJECT_DIR$/woo-strikeforce-blocksafe.php" />
+        <option value="$PROJECT_DIR$/includes/sfbs-base.php" />
+        <option value="$PROJECT_DIR$/includes/sfbs-license-management.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
+    <include_path>
+      <path value="S:\Install\XAMPP\htdocs\multisitewp\wp-includes" />
+      <path value="S:\Install\XAMPP\htdocs\multisitewp\wp-admin" />
+      <path value="S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins\woocommerce" />
+      <path value="S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins\woocommerce-subscriptions" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="310" />
+    <option name="width" value="697" />
+    <option name="height" value="745" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="woo-strikeforce-blocksafe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="woo-strikeforce-blocksafe" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="woo-strikeforce-blocksafe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins\woo-strikeforce-blocksafe\includes" />
+      <recent name="S:\Install\XAMPP\htdocs\multisitewp\wp-content\plugins\woo-strikeforce-blocksafe" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="60fa5b56-40fd-415c-af62-bf9328ed84b8" name="Default" comment="" />
+      <created>1529900261869</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1529900261869</updated>
+      <workItem from="1529900271157" duration="9238000" />
+      <workItem from="1529956761117" duration="254000" />
+      <workItem from="1530108883833" duration="5029000" />
+      <workItem from="1530158743908" duration="707000" />
+      <workItem from="1530183547335" duration="33000" />
+      <workItem from="1530198876241" duration="3436000" />
+      <workItem from="1530208641894" duration="8877000" />
+      <workItem from="1530273125810" duration="11298000" />
+      <workItem from="1530337729730" duration="11921000" />
+      <workItem from="1530360918556" duration="5772000" />
+      <workItem from="1530430218715" duration="7175000" />
+      <workItem from="1530499634169" duration="472000" />
+      <workItem from="1530510518804" duration="222000" />
+      <workItem from="1530513277735" duration="3913000" />
+      <workItem from="1530531057484" duration="266000" />
+      <workItem from="1530601138550" duration="981000" />
+      <workItem from="1530602242233" duration="231000" />
+      <workItem from="1530602502729" duration="76000" />
+      <workItem from="1530602682466" duration="10755000" />
+      <workItem from="1530630093198" duration="20649000" />
+      <workItem from="1530689161637" duration="6598000" />
+      <workItem from="1530764055236" duration="5097000" />
+      <workItem from="1530785930262" duration="2302000" />
+      <workItem from="1530865212642" duration="535000" />
+      <workItem from="1530881388895" duration="959000" />
+      <workItem from="1530897774155" duration="8930000" />
+      <workItem from="1530906774578" duration="2391000" />
+      <workItem from="1530934260219" duration="6536000" />
+      <workItem from="1531049304123" duration="1764000" />
+      <workItem from="1531144931726" duration="964000" />
+      <workItem from="1531154905743" duration="604000" />
+      <workItem from="1531416232155" duration="2878000" />
+      <workItem from="1531672678329" duration="3181000" />
+      <workItem from="1531696404736" duration="2324000" />
+      <workItem from="1531706609367" duration="4522000" />
+      <workItem from="1531836381370" duration="599000" />
+      <workItem from="1532064206543" duration="1441000" />
+      <workItem from="1532108664244" duration="93000" />
+      <workItem from="1533880713258" duration="100000" />
+      <workItem from="1533901013017" duration="1293000" />
+      <workItem from="1533910834107" duration="1643000" />
+      <workItem from="1533918052146" duration="609000" />
+      <workItem from="1535377519343" duration="2114000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="158782000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12405446" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1732224" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="33" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-guarded.php" />
+    <entry file="file://$PROJECT_DIR$/woo-strikeforce-blocksafe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-license-management.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="54" lean-forward="false" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-guarded.php" />
+    <entry file="file://$PROJECT_DIR$/woo-strikeforce-blocksafe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-license-management.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="54" lean-forward="true" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-guarded.php" />
+    <entry file="file://$PROJECT_DIR$/woo-strikeforce-blocksafe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-license-management.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" column="12" lean-forward="false" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/woo-strikeforce-blocksafe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-license-management.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" column="12" lean-forward="false" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../woocommerce-subscriptions/woocommerce-subscriptions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="phar://$PROJECT_DIR$/includes/thirdParty/httpful.phar/.phar/stub.php" />
+    <entry file="phar://$PROJECT_DIR$/includes/thirdParty/httpful.phar/Httpful/Bootstrap.php" />
+    <entry file="phar://$PROJECT_DIR$/includes/thirdParty/httpful.phar/Httpful/Http.php" />
+    <entry file="phar://$PROJECT_DIR$/includes/thirdParty/httpful.phar/Httpful/Response.php" />
+    <entry file="phar://$PROJECT_DIR$/includes/thirdParty/httpful.phar/Httpful/Request.php" />
+    <entry file="file://$PROJECT_DIR$/includes/thirdParty/httpful-php7/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="335">
+            <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="phar://$PROJECT_DIR$/includes/thirdParty/httpful_old.phar/.phar/stub.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="phar://$PROJECT_DIR$/includes/thirdParty/httpful_old.phar/Httpful/Bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/thirdParty/httpful-php7/bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/thirdParty/httpful-php7/tests/Httpful/HttpfulTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="528" column="30" lean-forward="false" selection-start-line="528" selection-start-column="30" selection-end-line="528" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="phar://$PROJECT_DIR$/includes/thirdParty/httpful_old.phar/Httpful/Response.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="76" column="60" lean-forward="false" selection-start-line="76" selection-start-column="54" selection-end-line="76" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="phar://$PROJECT_DIR$/includes/thirdParty/httpful_old.phar/Httpful/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="861" column="54" lean-forward="false" selection-start-line="861" selection-start-column="54" selection-end-line="861" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sf-options.php" />
+    <entry file="file://$PROJECT_DIR$/woocommerce-blocksafe-integration.php" />
+    <entry file="file://$PROJECT_DIR$/../woocommerce/includes/admin/wc-meta-box-functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2943">
+          <caret line="245" column="41" lean-forward="false" selection-start-line="245" selection-start-column="41" selection-end-line="245" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page_templates/provisioned-machine-header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page_templates/provisioned-machine-footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page_templates/provisioned-machine-loop-per-active.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-woo-admin-pannel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="16" column="36" lean-forward="false" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-mail.php" />
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-settings-options.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="695">
+          <caret line="161" column="3" lean-forward="false" selection-start-line="161" selection-start-column="3" selection-end-line="161" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-guarded.php" />
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-hooks.php" />
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-functions.php" />
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="93" column="21" lean-forward="false" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/thirdParty/httpful-php7/src/Httpful/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="739" column="79" lean-forward="true" selection-start-line="739" selection-start-column="79" selection-end-line="739" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_templates/suspension-notice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_templates/first-notice-suspension.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="179" lean-forward="true" selection-start-line="15" selection-start-column="88" selection-end-line="15" selection-end-column="179" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_templates/followup-notice-suspension.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_templates/payment-failed-notice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="76" lean-forward="true" selection-start-line="16" selection-start-column="76" selection-end-line="16" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-actions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="17" column="3" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-guarded-api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5015">
+          <caret line="295" column="12" lean-forward="false" selection-start-line="295" selection-start-column="12" selection-end-line="295" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-wc-action-hooks.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="118" column="73" lean-forward="false" selection-start-line="118" selection-start-column="73" selection-end-line="118" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-shortcodes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/email_templates/final-notice-suspension.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-debug.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding>
+            <element signature="e#105#137#0#PHP" expanded="false" />
+            <element signature="e#541#613#0#PHP" expanded="false" />
+            <element signature="e#906#2298#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/woo-strikeforce-blocksafe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="164" column="39" lean-forward="false" selection-start-line="164" selection-start-column="39" selection-end-line="164" selection-end-column="67" />
+          <folding>
+            <element signature="e#2715#2771#0#PHP" expanded="false" />
+            <element signature="e#2792#3409#0#PHP" expanded="false" />
+            <element signature="e#3430#8846#0#PHP" expanded="false" />
+            <element signature="e#8867#9630#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sfbs-license-management.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="159" column="117" lean-forward="false" selection-start-line="159" selection-start-column="117" selection-end-line="159" selection-end-column="117" />
+          <folding>
+            <element signature="e#2895#3824#0#PHP" expanded="false" />
+            <element signature="e#3915#4819#0#PHP" expanded="false" />
+            <element signature="e#4876#5792#0#PHP" expanded="false" />
+            <element signature="n#suspend_subscription_licenses#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
