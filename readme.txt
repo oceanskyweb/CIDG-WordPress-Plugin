@@ -6,8 +6,6 @@ Tested up to: 4.3.1
 Stable tag: 1.1.0
 License: Proprietary
 
-Testing Push Git.
-
 This plugin provides integration for StrikeForce API into Woo Commerce Subscription products.
 
 == Description ==
