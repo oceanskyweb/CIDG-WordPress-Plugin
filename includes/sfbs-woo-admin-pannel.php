@@ -1,7 +1,7 @@
 <?php
 
 add_action( 'woocommerce_product_write_panel_tabs', function() {
-    echo '<li class="woo_api_tab hide_if_grouped"><a href="#' . PLUGIN_PREFIX . '_product_data">StrikeForce & BlockSafe Test</a></li>';
+    echo '<li class="woo_api_tab hide_if_grouped"><a href="#' . PLUGIN_PREFIX . '_product_data">StrikeForce & BlockSafe</a></li>';
 }, 99 );
 
 add_action( 'woocommerce_product_data_panels', function() {
