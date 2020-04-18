@@ -255,7 +255,7 @@ function process_order_item_for_subscription($subscription, $process_type){
 
 function get_item_for_subscription($subscription_key){
     $subscription = wcs_get_subscription($subscription_key);
-    var_dump(subscription);
+    //var_dump(subscription);
 
     foreach ($subscription->get_items() as $item_id => $item) {
         return $item;
