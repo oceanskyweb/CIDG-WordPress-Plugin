@@ -258,6 +258,7 @@ function get_item_for_subscription($subscription_key){
     //var_dump(subscription);
 
     foreach ($subscription->get_items() as $item_id => $item) {
+        echo $item;
         return $item;
     }
 }
