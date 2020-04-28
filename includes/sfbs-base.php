@@ -3,6 +3,7 @@
  ** base functions **
  ********************/
 
+var_dump($subscription);
 
 function process_order_item_for_subscription($subscription, $process_type){
     /**
