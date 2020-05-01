@@ -3,6 +3,7 @@
  ** base functions **
  ********************/
 
+ print_r($subscription);
 
 function process_order_item_for_subscription($subscription, $process_type){
     /**
