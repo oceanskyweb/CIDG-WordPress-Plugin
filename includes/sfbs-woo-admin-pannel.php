@@ -195,7 +195,7 @@ add_action('admin_init', function() {
  * it will check whether the status in StrikeForce's database matches the status of the local
  * database. If it doese not, it will fix it so both both database match.
  */
-add_action('woocommerce_admin_order_data_after_order_details', function($subscription)
+add_action('woocommerce_admin_order_data_after_order_details', function( $subscription )
 {
     
     $orderType = $subscription->get_type(); //shop_subscription
@@ -282,40 +282,98 @@ add_action('woocommerce_admin_order_data_after_order_details', function($subscri
 
 
 
-add_filter( 'manage_edit-shop_subscription_columns', 'new_license_key_column' );
-function new_license_key_column( $columns )
+
+
+
+
+
+
+
+
+/**
+ * 
+ * Add new column named License that will hold the license number of the subscription
+ * 
+ */
+add_filter( 'manage_edit-shop_subscription_columns', function ( $existing_columns )
 {
     $new_columns = array();
 
-    foreach($columns as $column_name => $columne_info)
+    foreach($existing_columns as $column_name => $columne_info)
     {
         $new_columns[ $column_name ] = $columne_info;
 
-        if ( 'subscription' === $column_name )
+        if ( 'order_title' === $column_name )
         {
-            $new_columns['order_license_key'] = __( 'License Key', 'textdomain' );
+            $new_columns['order_license'] = __( 'License', 'textdomain' );
         }
     }
 
 	return $new_columns;
- }
+ }, 1000);
 
 
-//  function wc_add_license_key_column_content( $column ) {
-//     global $post;
-//     if ( 'order_license_key'  === $column ) {
-//          $subscription = new WC_Subscription($post->ID);
-//          if($meta_data = $subscription->get_meta_data()){                
-//              foreach($meta_data as $item_meta_data) {
-//                  if($item_meta_data->key == "License"){
-//                      $company = $item_meta_data->value;
-//                      break;
-//                  }
-//              }
-//          }   
-//          echo $company;      
-//     }
-//            }
-//  add_action('manage_shop_subscription_posts_custom_column','wc_add_license_key_column_content' );
 
 
+/**
+ * 
+ * Populate the new License column with the license number
+ * 
+ */
+add_action('manage_shop_subscription_posts_custom_column', function ( $column ) {
+    
+    global $post;
+    
+    if ( 'order_license' === $column ) {
+        
+        $subscription = new WC_Subscription($post->ID);
+        
+        foreach ($subscription->get_items() as $item_id => $item) {
+            
+            $license = $item['License'];
+        
+        }
+        echo $license;
+    }
+});
+
+
+
+
+add_action( 'parse_query','shop_license_search_custom_fields');
+function shop_license_search_custom_fields( $wp ) {
+    global $pagenow, $wpdb;    
+    if ( 'edit.php' !== $pagenow || empty( $_GET['s'] ) || 'shop_subscription' !== $wp->query_vars['post_type'] ) {	
+        /* Checking for the subscriptions edit page, if it isn’t then do nothing and exit from this function*/
+        return;
+    }
+    
+    $search = $_GET['s']; //getting the search phrases from the URL
+    
+    $post_status = array( $_GET['post_status'] );   
+    
+    $query = "  SELECT DISTINCT posts.ID AS product_id
+                FROM {$wpdb->prefix}woocommerce_order_items as order_items
+                LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta as order_item_meta
+                ON order_items.order_item_id = order_item_meta.order_item_id
+                LEFT JOIN {$wpdb->posts} AS posts ON order_items.order_id = posts.ID
+                LEFT JOIN {$wpdb->postmeta} AS postmeta ON posts.ID = postmeta.post_id
+                WHERE posts.post_type = 'shop_subscription'
+                AND posts.post_status IN ( '" . implode( "','", $post_status ) . "' )
+                AND order_items.order_item_type = 'line_item'
+                AND order_item_meta.meta_key = 'License'
+                AND order_item_meta.meta_value LIKE '%" .$search. "%'
+    ";
+	/* custom query */
+    
+    $search_results = $wpdb->get_results( $query );
+    
+    $post_ids = wp_parse_id_list( array_merge( wp_list_pluck( $search_results, 'product_id' )) );  
+    
+    /* Executing the query and returning the result in the following code*/  
+    if ( ! empty( $post_ids ) ) {
+        unset( $wp->query_vars['s'] );
+        $wp->query_vars['license'] = true;
+        $wp->query_vars['post__in'] = $post_ids;
+    }
+}
