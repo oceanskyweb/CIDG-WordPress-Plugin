@@ -3,7 +3,7 @@
     Plugin Name: Woo StrikeForce & BlockSafe API
     Plugin URI: http:/tecgent.com/plugins/woo-strikeforce-blocksafe-api
     Description: This plugin integrates Woo Subscriptions with the StrikeForce & BlockSafe API.
-    Version: 2.0.2
+    Version: 3.0
     Author: tecgent
     Author URI: https://tecgent.com/
     License: Proprietary
