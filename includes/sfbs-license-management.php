@@ -154,17 +154,17 @@ add_action('license_suspension_procedure', function($subscription_key, $count, $
             //write_log("SUBJECT: {$emailSubject}");
             //write_log("MESSAGE: {$emailMessage}");
             post_email($emailSubject, $emailMessage, $opt['varmailToken']);
-		    wp_mail(
-		    	'tecgent@gmail.com',
-			    'Product Mail Log',
-			    print_r( array($subscription->get_billing_email(), $emailSubject, $emailMessage, $opt['varmailToken']), true )
-		    );
+		    // wp_mail(
+            //     'tecgent@gmail.com',
+			//     'Product Mail Log',
+			//     print_r( array($subscription->get_billing_email(), $emailSubject, $emailMessage, $opt['varmailToken']), true )
+		    // );
 
             $header = array(
 		        'Content-Type: text/html; charset=UTF-8',
 		        'From: CyberIdGuard <support@cyberidguard.com>',
 		        'Reply-To: CyberIdGuard <support@cyberidguard.com>',
-		        'Bcc: Tecgent <tecgent@gmail.com>',
+		        'Bcc: Creative Services <support@creativeservices.io>',
 		        'Bcc: Tecgent <admin@tecgent.com>'
 	        );
             wp_mail($subscription->get_billing_email(), $emailSubject, $emailMessage, $header);

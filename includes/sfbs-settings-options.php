@@ -160,3 +160,5 @@ add_action('admin_menu', function(){
 add_action('admin_init', function() {
     register_setting( PLUGIN_PREFIX . '_settings', PLUGIN_PREFIX, 'clean_user_input');
 });
+
+
