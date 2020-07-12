@@ -37,7 +37,7 @@ function strikeforce_account_product_custom_fields()
         array ('sellerID', 'Enter Product Seller ID', 'Seller ID', 'text'),
         array ('userID', 'Enter Product User ID', 'User ID', 'text'),
         array ('userPassword', 'Enter Account Password', 'Password', 'password'),
-        // array ('packSize', 'Enter Product Pack size', 'Pack Size', 'number'),
+        array ('packSize', 'Enter Product Pack size', 'Pack Size', 'number'),
         array ('productId', 'Enter Product ID', 'Product ID', 'number'),
         array ('licenseType', 'Enter License Type', 'License Type', 'text'),
         array ('gracePeriod', 'Enter License Type', 'Grace Period', 'number'),
@@ -85,7 +85,7 @@ function custom_account_text_fields_save( $post_id )
         'sellerID',
         'userID',
         'userPassword',
-        // 'packSize',
+        'packSize',
         'productId',
         'licenseType',
         'gracePeriod',
@@ -141,10 +141,10 @@ function sanitize_account_user_input($input)
             'title' => 'Product ID',
             'description' => 'The Product ID.'
         ),
-        // 'packSize' => array (
-        //     'title' => 'Pack Size',
-        //     'description' => 'The Pack'
-        // ),
+        'packSize' => array (
+            'title' => 'Pack Size',
+            'description' => 'The Pack'
+        ),
         'licenseType' => array (
             'title' => 'License Type',
             'description' => 'License Type'
