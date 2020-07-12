@@ -373,7 +373,7 @@ function shop_license_search_custom_fields( $wp ) {
     /* Executing the query and returning the result in the following code*/  
     if ( ! empty( $post_ids ) ) {
         unset( $wp->query_vars['s'] );
-        $wp->query_vars['license'] = true;
+        $wp->query_vars['License'] = true;
         $wp->query_vars['post__in'] = $post_ids;
     }
 }
