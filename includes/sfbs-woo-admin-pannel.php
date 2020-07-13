@@ -189,7 +189,7 @@ add_action('admin_init', function() {
 
 /**
  * 
- * Functionality that will fix discrependcies between local and strikeforce licenses statuses
+ * This functionality that will fix discrependcies between local and strikeforce licenses statuses
  * 
  * If the current product is a subscription. If it is a subscription,
  * it will check whether the status in StrikeForce's database matches the status of the local
@@ -285,7 +285,7 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
 
                                 $to = 'figueroa.victorj@gmail.com';
                                 $subject = 'The subject - Enable license if active';
-                                $body = 'Testing Email for CyberID on setting options page';
+                                $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
                                 $headers = array('Content-Type: text/html; charset=UTF-8');
                                 
                                 wp_mail( $to, $subject, $body, $headers );
@@ -329,7 +329,7 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
 
                                 $to = 'figueroa.victorj@gmail.com';
                                 $subject = 'The subject - Suspend license if on-hold';
-                                $body = 'Testing Email for CyberID on setting options page';
+                                $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
                                 $headers = array('Content-Type: text/html; charset=UTF-8');
                                 
                                 wp_mail( $to, $subject, $body, $headers );
@@ -373,7 +373,7 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
 
                                 $to = 'figueroa.victorj@gmail.com';
                                 $subject = 'The subject - Suspend license if cancelled';
-                                $body = 'Testing Email for CyberID on setting options page';
+                                $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
                                 $headers = array('Content-Type: text/html; charset=UTF-8');
                                 
                                 wp_mail( $to, $subject, $body, $headers );
@@ -417,7 +417,7 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
 
                                 $to = 'figueroa.victorj@gmail.com';
                                 $subject = 'The subject - Suspend license if expired';
-                                $body = 'Testing Email for CyberID on setting options page';
+                                $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
                                 $headers = array('Content-Type: text/html; charset=UTF-8');
                                 
                                 wp_mail( $to, $subject, $body, $headers );
@@ -455,6 +455,17 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
                             } else {
 
                                 $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+                            }
+
+                            if($i === 3){
+
+                                $to = 'figueroa.victorj@gmail.com';
+                                $subject = 'The subject - Suspend license if expired';
+                                $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
+                                $headers = array('Content-Type: text/html; charset=UTF-8');
+                                
+                                wp_mail( $to, $subject, $body, $headers );
+
                             }
                         }
                     }
