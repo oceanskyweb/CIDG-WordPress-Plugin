@@ -327,7 +327,7 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
 
                             if($i === 3){
 
-                                $to = 'figueroa.victorj@gmail.com';
+                                $to = 'support@cyberidguard.com';
                                 $subject = 'The subject - Suspend license if on-hold';
                                 $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
                                 $headers = array('Content-Type: text/html; charset=UTF-8');
@@ -371,7 +371,7 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
 
                             if($i === 3){
 
-                                $to = 'figueroa.victorj@gmail.com';
+                                $to = 'support@cyberidguard.com';
                                 $subject = 'The subject - Suspend license if cancelled';
                                 $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
                                 $headers = array('Content-Type: text/html; charset=UTF-8');
@@ -415,7 +415,7 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
 
                             if($i === 3){
 
-                                $to = 'figueroa.victorj@gmail.com';
+                                $to = 'support@cyberidguard.com';
                                 $subject = 'The subject - Suspend license if expired';
                                 $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
                                 $headers = array('Content-Type: text/html; charset=UTF-8');
@@ -459,7 +459,7 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
 
                             if($i === 3){
 
-                                $to = 'figueroa.victorj@gmail.com';
+                                $to = 'support@cyberidguard.com';
                                 $subject = 'The subject - Suspend license if expired';
                                 $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
                                 $headers = array('Content-Type: text/html; charset=UTF-8');
