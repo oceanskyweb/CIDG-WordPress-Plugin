@@ -197,12 +197,15 @@ add_action('admin_init', function() {
  */
 add_action('woocommerce_admin_order_data_after_order_details', function( $subscription )
 {
-    
+    $time = time();
+
     $orderType = $subscription->get_type(); //shop_subscription
 
     if ( $orderType == "shop_subscription" && $subscription->get_status() != 'cancelled') 
     {
         foreach ($subscription->get_items() as $item_id => $item) {
+
+            $orderNumber = "{$subscription->get_id()}-{$item['product_id']}-{$time}";
             
             $product = wc_get_product($item['product_id']);
     
@@ -249,24 +252,216 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
                     echo '</p>';
                 }
             }
-    
-            switch($sfLicenseStatus)
+
+            $cbidLicenseStatus = $subscription->get_status();
+
+            switch($cbidLicenseStatus)
             {
-                case 'Issued':
-    
+                case 'active':
+
+
+                    if (!empty($subscription->get_id() && $sfLicenseStatus != 'Issued')) 
+                    {
+                        $reasonForChange = 'Discrepancy Alert. Attempting to fix discrepancy.';
+                        
+                        for($i = 0; $i<3; $i++) {
+                            
+                            sleep(1);
+
+                            if($sfLicenseStatus == 'Issued') break;
+
+                            $enableResponse = (array) $guardedIdApi->enableLicense($orderNumber, $item['License'], $reasonForChange);
+
+                            if ($enableResponse["ErrorDescription"] == "Success")
+                            {
+                                $subscription->add_order_note('Discrepancy Alert! License discrepancy fixed.', 0, false);
+
+                            } else {
+
+                                $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+                            }
+
+                            if($i === 3){
+
+                                $to = 'figueroa.victorj@gmail.com';
+                                $subject = 'The subject - Enable license if active';
+                                $body = 'Testing Email for CyberID on setting options page';
+                                $headers = array('Content-Type: text/html; charset=UTF-8');
+                                
+                                wp_mail( $to, $subject, $body, $headers );
+
+                            }
+                        }
+                    }
+                    
                     if (!empty($subscription->get_id() && $subscription->get_status() != 'active'))
                     {
-                        $returnedValue = $subscription->set_status('active');
+                        $returnedValue = $subscription->set_status('on-hold');
 
                         $subscription->save();
                     }
                     
                 break;
-                case 'Suspend':
+                case 'on-hold':
+                   
+                    if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
+                    {
+                        $reasonForChange = 'Discrepancy Alert. Attempting to fix discrepancy.';
                     
+                        for($i = 0; $i<3; $i++) {
+                            
+                            sleep(1);
+
+                            if($sfLicenseStatus == 'Suspend') break;
+                        
+                            $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], $reasonForChange);
+
+                            if ($enableResponse["ErrorDescription"] == "Success")
+                            {
+                                $subscription->add_order_note('Discrepancy Alert! License discrepancy fixed.', 0, false);
+
+                            } else {
+
+                                $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+                            }
+
+                            if($i === 3){
+
+                                $to = 'figueroa.victorj@gmail.com';
+                                $subject = 'The subject - Suspend license if on-hold';
+                                $body = 'Testing Email for CyberID on setting options page';
+                                $headers = array('Content-Type: text/html; charset=UTF-8');
+                                
+                                wp_mail( $to, $subject, $body, $headers );
+
+                            }
+                        }
+                    }
+
                     if (!empty($subscription->get_id() && $subscription->get_status() != 'on-hold'))
                     {
                         $returnedValue = $subscription->set_status('on-hold');
+
+                        $subscription->save();
+                    }
+    
+                break;
+                case 'cancelled':
+                   
+                    if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
+                    {
+                        $reasonForChange = 'Discrepancy Alert. Attempting to fix discrepancy.';
+                    
+                        for($i = 0; $i<3; $i++) {
+
+                            sleep(1);
+                            
+                            if($sfLicenseStatus == 'Suspend') break;
+                        
+                            $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], $reasonForChange);
+
+                            if ($enableResponse["ErrorDescription"] == "Success")
+                            {
+                                $subscription->add_order_note('Discrepancy Alert! License discrepancy fixed.', 0, false);
+
+                            } else {
+
+                                $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+                            }
+
+                            if($i === 3){
+
+                                $to = 'figueroa.victorj@gmail.com';
+                                $subject = 'The subject - Suspend license if cancelled';
+                                $body = 'Testing Email for CyberID on setting options page';
+                                $headers = array('Content-Type: text/html; charset=UTF-8');
+                                
+                                wp_mail( $to, $subject, $body, $headers );
+
+                            }
+                        }
+                    }
+
+                    if (!empty($subscription->get_id() && $subscription->get_status() != 'cancelled'))
+                    {
+                        $returnedValue = $subscription->set_status('cancelled');
+
+                        $subscription->save();
+                    }
+    
+                break;
+                case 'expired':
+                   
+                    if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
+                    {
+                        $reasonForChange = 'Discrepancy Alert. Attempting to fix discrepancy.';
+                    
+                        for($i = 0; $i<3; $i++) {
+
+                            sleep(1);
+                            
+                            if($sfLicenseStatus == 'Suspend') break;
+                        
+                            $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], $reasonForChange);
+
+                            if ($enableResponse["ErrorDescription"] == "Success")
+                            {
+                                $subscription->add_order_note('Discrepancy Alert! License discrepancy fixed.', 0, false);
+
+                            } else {
+
+                                $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+                            }
+
+                            if($i === 3){
+
+                                $to = 'figueroa.victorj@gmail.com';
+                                $subject = 'The subject - Suspend license if expired';
+                                $body = 'Testing Email for CyberID on setting options page';
+                                $headers = array('Content-Type: text/html; charset=UTF-8');
+                                
+                                wp_mail( $to, $subject, $body, $headers );
+
+                            }
+                        }
+                    }
+
+                    if (!empty($subscription->get_id() && $subscription->get_status() != 'expired'))
+                    {
+                        $returnedValue = $subscription->set_status('expired');
+
+                        $subscription->save();
+                    }
+    
+                break;
+                case 'pending-cancel':
+                   
+                    if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
+                    {
+                        $reasonForChange = 'Discrepancy Alert. Attempting to fix discrepancy.';
+                    
+                        for($i = 0; $i<3; $i++) {
+
+                            sleep(1);
+                            
+                            if($sfLicenseStatus == 'Suspend') break;
+
+                            $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], $reasonForChange);
+
+                            if ($enableResponse["ErrorDescription"] == "Success")
+                            {
+                                $subscription->add_order_note('Discrepancy Alert! License discrepancy fixed.', 0, false);
+
+                            } else {
+
+                                $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+                            }
+                        }
+                    }
+
+                    if (!empty($subscription->get_id() && $subscription->get_status() != 'pending-cancel'))
+                    {
+                        $returnedValue = $subscription->set_status('pending-cancel');
 
                         $subscription->save();
                     }
