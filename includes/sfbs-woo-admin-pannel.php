@@ -46,9 +46,9 @@ function strikeforce_account_product_custom_fields()
 
 
     $input_checkbox = get_post_meta( $post->ID, 'is_strikeforce', true );
-    if( empty( $input_checkbox ) )
-        $input_checkbox = ''; 
-
+    if( empty( $input_checkbox ) ) {
+        $input_checkbox = '';
+    }
         woocommerce_wp_checkbox(array(
             'id'            => 'is_strikeforce',
             'label'         => __('Strikeforce', 'woocommerce' ),
@@ -60,15 +60,13 @@ function strikeforce_account_product_custom_fields()
 
     foreach ($fields as $field)
     {
-        woocommerce_wp_text_input(
-            array(
+        woocommerce_wp_text_input( array(
                 'id'            => $field[0],
                 'placeholder'   => $field[1],
                 'label'         => __($field[2], 'woocommerce'),
                 'desc_tip'      => 'true',
-                'type'          => $field[3]
-            ),
-        );
+                'type'          => $field[3],
+        ));
     }
     echo '</div>';
 
