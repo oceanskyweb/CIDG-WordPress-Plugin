@@ -345,7 +345,7 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
                                 
                                 wp_mail( $to, $subject, $body, $headers );
                             }
-                        }
+                        } 
                     }
 
                     if (!empty($subscription->get_id() && $subscription->get_status() != 'on-hold'))
