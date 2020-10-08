@@ -118,3 +118,19 @@ add_action('woocommerce_subscription_payment_failed', function($subscription){
     write_log("Failed-hook, Subscription id = {$subscription->get_id()}");
     process_order_item_for_subscription($subscription, 'payment_failed');
 });
+
+/*
+ Action: 'processed_subscription_payment_failure'
+
+ Parameters:
+ $user_id Integer The ID of the user who owns the subscription.
+ $subscription_key String The key for the subscription to which the failed payment relates.
+
+ Description: Triggered when a subscription payment is attempted for a subscription specified with $subscription_key
+ but the payment failed.
+ */
+add_action('woocommerce_subscription_discrepency_fix', function($subscription){
+    //TODO:REMOVE
+    write_log("Failed-hook, Subscription id = {$subscription->get_id()}");
+    process_order_item_for_subscription($subscription, 'payment_failed');
+});

@@ -82,6 +82,7 @@ function process_order_item_for_subscription($subscription, $process_type){
             switch ($process_type) {
                 case 'payment_processed':
                     break;
+                    
                 case 'hold':
                     $reasonForChange = __('Subscription put on hold.');
                     $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], $reasonForChange);
