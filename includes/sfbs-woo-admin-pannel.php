@@ -265,272 +265,277 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
                     $invalidLicenseKey = "Strikeforce API reports: " . $sfLicenseStatus . ".";
 
                     $cbidLicenseStatus = $subscription->get_status();
-
-                    switch($cbidLicenseStatus)
-                    {
-                        case 'active':
-
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Issued')) 
-                            {   
-                                for($i = 0; $i<3; $i++) {
-
-                                    $enableResponse = (array) $guardedIdApi->enableLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Enable license if active';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                }
-                            }
-                            
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'active'))
-                            {
-                                $returnedValue = $subscription->set_status('on-hold');
-
-                                $subscription->save();
-                            }
-                            
-                        break;
-                        case 'on-hold':
-                            
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-                            elseif (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
-                            {
-                            
-                                for($i = 0; $i<3; $i++) 
-                                {
-                                
-                                    $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Suspend license if on-hold';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                } 
-                            }
-
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'on-hold'))
-                            {
-                                $returnedValue = $subscription->set_status('on-hold');
-
-                                $subscription->save();
-                            }
-            
-                        break;
-                        case 'wc-cancelled':
-
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-                        
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
-                            {
-                            
-                                for($i = 0; $i<3; $i++) {
-                                
-                                    $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Suspend license if cancelled';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                }
-                            }
-
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'cancelled'))
-                            {
-                                $returnedValue = $subscription->set_status('cancelled');
-
-                                $subscription->save();
-                            }
-            
-                        break;
-                        case 'expired':
-                            
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
-                            {   
-                                for($i = 0; $i<3; $i++) 
-                                {
-                                
-                                    $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Suspend license if expired';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                }
-                            }
-
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'expired'))
-                            {
-                                $returnedValue = $subscription->set_status('expired');
-
-                                $subscription->save();
-                            }
-            
-                        break;
-                        case 'pending-cancel':
-                            
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
-                            {
-                                for($i = 0; $i<3; $i++) {
-
-                                    $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Suspend license if expired';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                }
-                            }
-
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'pending-cancel'))
-                            {
-                                $returnedValue = $subscription->set_status('pending-cancel');
-
-                                $subscription->save();
-                            }
-            
-                        break;
-                        case 'pending':
-                            
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
-                            {
-                                for($i = 0; $i<3; $i++) {
-
-                                    $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Suspend license if expired';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                }
-                            }
-
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'pending'))
-                            {
-                                $returnedValue = $subscription->set_status('pending');
-
-                                $subscription->save();
-                            }
-            
-                        break;
-                    }
                 }
+
+                //     switch($cbidLicenseStatus)
+                //     {
+                //         case 'active':
+
+                //             $returnedValue = $subscription->set_status('on-hold');
+
+                //             $subscription->save();
+
+                //             if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
+
+                //                 $subscription->add_order_note($invalidLicenseKey, 0, false);
+                                
+                //                 break;
+                //             }
+
+                //             if (!empty($subscription->get_id() && $sfLicenseStatus != 'Issued')) 
+                //             {   
+                //                 for($i = 0; $i<3; $i++) {
+
+                //                     $enableResponse = (array) $guardedIdApi->enableLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
+
+                //                     sleep(1);
+
+                //                     if ($enableResponse["ErrorDescription"] == "Success")
+                //                     {
+                //                         $subscription->add_order_note('Discrepancy fixed!', 0, false);
+
+                //                     } elseif($i === 3) {
+
+                //                         $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+
+                //                         $to = 'support@cyberidguard.com';
+                //                         $subject = 'The subject - Enable license if active';
+                //                         $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
+                //                         $headers = array('Content-Type: text/html; charset=UTF-8');
+                                        
+                //                         wp_mail( $to, $subject, $body, $headers );
+                //                     }
+                //                 }
+                //             }
+                            
+                //             if (!empty($subscription->get_id() && $subscription->get_status() != 'active'))
+                //             {
+                //                 $returnedValue = $subscription->set_status('on-hold');
+
+                //                 $subscription->save();
+                //             }
+                            
+                //         break;
+                //         case 'on-hold':
+                            
+                //             if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
+
+                //                 $subscription->add_order_note($invalidLicenseKey, 0, false);
+                                
+                //                 break;
+                //             }
+                //             elseif (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
+                //             {
+                            
+                //                 for($i = 0; $i<3; $i++) 
+                //                 {
+                                
+                //                     $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
+
+                //                     sleep(1);
+
+                //                     if ($enableResponse["ErrorDescription"] == "Success")
+                //                     {
+                //                         $subscription->add_order_note('Discrepancy fixed!', 0, false);
+
+                //                     } elseif($i === 3) {
+
+                //                         $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+
+                //                         $to = 'support@cyberidguard.com';
+                //                         $subject = 'The subject - Suspend license if on-hold';
+                //                         $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
+                //                         $headers = array('Content-Type: text/html; charset=UTF-8');
+                                        
+                //                         wp_mail( $to, $subject, $body, $headers );
+                //                     }
+                //                 } 
+                //             }
+
+                //             if (!empty($subscription->get_id() && $subscription->get_status() != 'on-hold'))
+                //             {
+                //                 $returnedValue = $subscription->set_status('on-hold');
+
+                //                 $subscription->save();
+                //             }
+            
+                //         break;
+                //         case 'wc-cancelled':
+
+                //             if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
+
+                //                 $subscription->add_order_note($invalidLicenseKey, 0, false);
+                                
+                //                 break;
+                //             }
+                        
+                //             if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
+                //             {
+                            
+                //                 for($i = 0; $i<3; $i++) {
+                                
+                //                     $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
+
+                //                     sleep(1);
+
+                //                     if ($enableResponse["ErrorDescription"] == "Success")
+                //                     {
+                //                         $subscription->add_order_note('Discrepancy fixed!', 0, false);
+
+                //                     } elseif($i === 3) {
+
+                //                         $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+
+                //                         $to = 'support@cyberidguard.com';
+                //                         $subject = 'The subject - Suspend license if cancelled';
+                //                         $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
+                //                         $headers = array('Content-Type: text/html; charset=UTF-8');
+                                        
+                //                         wp_mail( $to, $subject, $body, $headers );
+                //                     }
+                //                 }
+                //             }
+
+                //             if (!empty($subscription->get_id() && $subscription->get_status() != 'cancelled'))
+                //             {
+                //                 $returnedValue = $subscription->set_status('cancelled');
+
+                //                 $subscription->save();
+                //             }
+            
+                //         break;
+                //         case 'expired':
+                            
+                //             if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
+
+                //                 $subscription->add_order_note($invalidLicenseKey, 0, false);
+                                
+                //                 break;
+                //             }
+
+                //             if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
+                //             {   
+                //                 for($i = 0; $i<3; $i++) 
+                //                 {
+                                
+                //                     $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
+
+                //                     sleep(1);
+
+                //                     if ($enableResponse["ErrorDescription"] == "Success")
+                //                     {
+                //                         $subscription->add_order_note('Discrepancy fixed!', 0, false);
+
+                //                     } elseif($i === 3) {
+
+                //                         $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+
+                //                         $to = 'support@cyberidguard.com';
+                //                         $subject = 'The subject - Suspend license if expired';
+                //                         $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
+                //                         $headers = array('Content-Type: text/html; charset=UTF-8');
+                                        
+                //                         wp_mail( $to, $subject, $body, $headers );
+                //                     }
+                //                 }
+                //             }
+
+                //             if (!empty($subscription->get_id() && $subscription->get_status() != 'expired'))
+                //             {
+                //                 $returnedValue = $subscription->set_status('expired');
+
+                //                 $subscription->save();
+                //             }
+            
+                //         break;
+                //         case 'pending-cancel':
+                            
+                //             if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
+
+                //                 $subscription->add_order_note($invalidLicenseKey, 0, false);
+                                
+                //                 break;
+                //             }
+
+                //             if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
+                //             {
+                //                 for($i = 0; $i<3; $i++) {
+
+                //                     $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
+
+                //                     sleep(1);
+
+                //                     if ($enableResponse["ErrorDescription"] == "Success")
+                //                     {
+                //                         $subscription->add_order_note('Discrepancy fixed!', 0, false);
+
+                //                     } elseif($i === 3) {
+
+                //                         $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+
+                //                         $to = 'support@cyberidguard.com';
+                //                         $subject = 'The subject - Suspend license if expired';
+                //                         $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
+                //                         $headers = array('Content-Type: text/html; charset=UTF-8');
+                                        
+                //                         wp_mail( $to, $subject, $body, $headers );
+                //                     }
+                //                 }
+                //             }
+
+                //             if (!empty($subscription->get_id() && $subscription->get_status() != 'pending-cancel'))
+                //             {
+                //                 $returnedValue = $subscription->set_status('pending-cancel');
+
+                //                 $subscription->save();
+                //             }
+            
+                //         break;
+                //         case 'pending':
+                            
+                //             if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
+
+                //                 $subscription->add_order_note($invalidLicenseKey, 0, false);
+                                
+                //                 break;
+                //             }
+
+                //             if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
+                //             {
+                //                 for($i = 0; $i<3; $i++) {
+
+                //                     $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
+
+                //                     sleep(1);
+
+                //                     if ($enableResponse["ErrorDescription"] == "Success")
+                //                     {
+                //                         $subscription->add_order_note('Discrepancy fixed!', 0, false);
+
+                //                     } elseif($i === 3) {
+
+                //                         $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
+
+                //                         $to = 'support@cyberidguard.com';
+                //                         $subject = 'The subject - Suspend license if expired';
+                //                         $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
+                //                         $headers = array('Content-Type: text/html; charset=UTF-8');
+                                        
+                //                         wp_mail( $to, $subject, $body, $headers );
+                //                     }
+                //                 }
+                //             }
+
+                //             if (!empty($subscription->get_id() && $subscription->get_status() != 'pending'))
+                //             {
+                //                 $returnedValue = $subscription->set_status('pending');
+
+                //                 $subscription->save();
+                //             }
+            
+                //         break;
+                //     }
+                // }
             
             }else{
 
@@ -550,29 +555,46 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
 
 
 
+// create a scheduled event (if it does not exist already)
+function cronstarter_activation() {
+    if( !wp_next_scheduled( 'cidg_strikeforce_discrepency_cron_job15' ) ) {  
+        wp_schedule_event( time(), 'everyfifteenminute', 'cidg_strikeforce_discrepency_cron_job15' );  
+    }
+}
+// and make sure it's called whenever WordPress loads
+add_action('wp', 'cronstarter_activation');
+
+
+// unschedule event upon plugin deactivation
+function cronstarter_deactivate() {
+    // find out when the last event was scheduled
+    $timestamp = wp_next_scheduled ('cidg_strikeforce_discrepency_cron_job15');
+    // unschedule previous event if any
+wp_unschedule_event ($timestamp, 'cidg_strikeforce_discrepency_cron_job15');
+}
+register_deactivation_hook (__FILE__, 'cronstarter_deactivate');
 
 
 
-add_action('fix_or_update_subscription_discrepencies_with_strikeforce', 'cyberIdGuard_subscription_discrepency_fix');
 
-function cyberIdGuard_subscription_discrepency_fix( $subscription )
+add_action('cidg_strikeforce_discrepency_cron_job15', 'cyberIdGuard_subscription_discrepency_fix');
+
+function cyberIdGuard_subscription_discrepency_fix()
 {
-    
     $time = time();
-
-    $orderType = $subscription->get_type(); //shop_subscription
-
-    if ( $orderType == "shop_subscription") 
+    
+    // Get All Active and On Hold Subscriptions
+    $args = array( 'subscriptions_per_page' => -1, 'subscription_status' => array('wc-active', 'wc-on-hold') );
+    $subscriptions = wcs_get_subscriptions( $args );
+    
+    foreach ($subscriptions as $item_id => $subscription) 
     {
-        $numTimeFuncRan = 0;
-        foreach ($subscription->get_items() as $item_id => $item) 
-        {
-            $numTimeFuncRan++;
+        foreach($subscription->get_items() as $item) {
 
             $orderNumber = "{$subscription->get_id()}-{$item['product_id']}-{$time}";
             
             $product = wc_get_product($item['product_id']);
-    
+
             $product_id = $product->get_id();
 
             $is_Strikeforce = get_post_meta( $product_id, 'is_strikeforce', true );
@@ -596,304 +618,48 @@ function cyberIdGuard_subscription_discrepency_fix( $subscription )
                         $account_info[$prod_acct_fields[$i]] = get_post_meta( $product_id, $prod_acct_fields[$i], true );
                     }
                 }
-    
+
                 $guardedIdApi = get_guardedID_manager($account_info);
 
                 $xmlObject = $guardedIdApi->getLicenseInfo($item['License']);
-    
+
                 $licenseArray = convertXml2Array($xmlObject);
 
                 if(array_key_exists('GIDLicenseInfo', $licenseArray))
                 {
                     $sfLicenseStatus = $licenseArray['GIDLicenseInfo']['GIDLicense']['LicenseStatus'];
 
-                    echo '<p class="form-field form-field-wide">';
-                    
-                    echo '<label for="order_status">Strikeforce License status:</label>';
-                    
-                    echo '<input type="text" id="order_status" name="license_status" value="' . $sfLicenseStatus . '" disabled />';
-                    
-                    echo '</p>';
-
-                } elseif(array_key_exists('ErrorDescription', $licenseArray)) {
-
-                    $sfLicenseStatus = $licenseArray['ErrorDescription'];
-
-                    echo '<p class="form-field form-field-wide">';
-                    
-                    echo '<label for="order_status">Strikeforce License status:</label>';
-                    
-                    echo '<input type="text" id="order_status" name="license_status" value="' . $sfLicenseStatus . '" disabled />';
-                    
-                    echo '</p>';
-
                     $invalidLicenseKey = "Strikeforce API reports: " . $sfLicenseStatus . ".";
 
                     $cbidLicenseStatus = $subscription->get_status();
 
-                    switch($cbidLicenseStatus)
+                    switch($sfLicenseStatus)
                     {
-                        case 'active':
-
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-
+                        case 'Suspended':
                             if (!empty($subscription->get_id() && $sfLicenseStatus != 'Issued')) 
                             {   
-                                for($i = 0; $i<3; $i++) {
-
-                                    $enableResponse = (array) $guardedIdApi->enableLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Enable license if active';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                }
-                            }
-                            
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'active'))
-                            {
                                 $returnedValue = $subscription->set_status('on-hold');
 
                                 $subscription->save();
                             }
                             
                         break;
-                        case 'on-hold':
-                            
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-                            elseif (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
-                            {
-                            
-                                for($i = 0; $i<3; $i++) 
-                                {
-                                
-                                    $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Suspend license if on-hold';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                } 
-                            }
-
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'on-hold'))
-                            {
-                                $returnedValue = $subscription->set_status('on-hold');
-
-                                $subscription->save();
-                            }
-            
-                        break;
-                        case 'wc-cancelled':
-
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-                        
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
-                            {
-                            
-                                for($i = 0; $i<3; $i++) {
-                                
-                                    $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Suspend license if cancelled';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                }
-                            }
-
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'cancelled'))
-                            {
-                                $returnedValue = $subscription->set_status('cancelled');
-
-                                $subscription->save();
-                            }
-            
-                        break;
-                        case 'expired':
-                            
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
+                        case 'Issued':
+                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspended')) 
                             {   
-                                for($i = 0; $i<3; $i++) 
-                                {
-                                
-                                    $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Suspend license if expired';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                }
-                            }
-
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'expired'))
-                            {
-                                $returnedValue = $subscription->set_status('expired');
+                                $returnedValue = $subscription->set_status('active');
 
                                 $subscription->save();
                             }
             
                         break;
-                        case 'pending-cancel':
-                            
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
-                            {
-                                for($i = 0; $i<3; $i++) {
-
-                                    $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Suspend license if expired';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                }
-                            }
-
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'pending-cancel'))
-                            {
-                                $returnedValue = $subscription->set_status('pending-cancel');
+                        default:
+                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Issued')) 
+                            {   
+                                $returnedValue = $subscription->set_status('on-hold');
 
                                 $subscription->save();
                             }
-            
-                        break;
-                        case 'pending':
-                            
-                            if (!empty($subscription->get_id() && $sfLicenseStatus == 'Invalid license key')) {
-
-                                $subscription->add_order_note($invalidLicenseKey, 0, false);
-                                
-                                break;
-                            }
-
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspend')) 
-                            {
-                                for($i = 0; $i<3; $i++) {
-
-                                    $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
-
-                                    sleep(1);
-
-                                    if ($enableResponse["ErrorDescription"] == "Success")
-                                    {
-                                        $subscription->add_order_note('Discrepancy fixed!', 0, false);
-
-                                    } elseif($i === 3) {
-
-                                        $subscription->add_order_note('Discrepancy Alert! License discrepancy could not fixed. Contact the administrator', 0, false);
-
-                                        $to = 'support@cyberidguard.com';
-                                        $subject = 'The subject - Suspend license if expired';
-                                        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
-                                        $headers = array('Content-Type: text/html; charset=UTF-8');
-                                        
-                                        wp_mail( $to, $subject, $body, $headers );
-                                    }
-                                }
-                            }
-
-                            if (!empty($subscription->get_id() && $subscription->get_status() != 'pending'))
-                            {
-                                $returnedValue = $subscription->set_status('pending');
-
-                                $subscription->save();
-                            }
-            
-                        break;
                     }
                 }
             
@@ -909,14 +675,27 @@ function cyberIdGuard_subscription_discrepency_fix( $subscription )
                 
             }
         }
-        wp_mail( 'figueroa.victorj@gmail.com', 'Automatic email', 'Automatic scheduled email from WordPress to test cron that ran {$numTimeFuncRan} times');
+        $to = 'victor@creativeservices.io';
+        $subject = 'ran 87 times';
+        $body = 'After 3 attempts of trying to update status to {cbidLicenseStatus}, {orderNumber} is having problems synching with the Strikeforce License Server. Contact the administrator for assistance ';
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+        
+        wp_mail( $to, $subject, $body, $headers );
     }
 }
 
 
 
 
+function update_order_status($order_id, $status){
 
+    if ( ! $order_id || ! $status)
+        return;
+    
+    $order = new WC_Order($order_id);
+    $order->update_status($status); 
+
+}
 
 
 
