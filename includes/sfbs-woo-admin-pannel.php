@@ -536,6 +536,8 @@ add_action('woocommerce_admin_order_data_after_order_details', function( $subscr
                 //         break;
                 //     }
                 // }
+
+                //cyberIdGuard_subscription_discrepency_fix();
             
             }else{
 
@@ -584,8 +586,8 @@ function cyberIdGuard_subscription_discrepency_fix()
     $time = time();
     
     // Get All Active and On Hold Subscriptions
-    $args = array( 'subscriptions_per_page' => -1, 'subscription_status' => array('wc-active', 'wc-on-hold') );
-    $subscriptions = wcs_get_subscriptions( $args );
+    $get_subscriptions_args = array( 'subscriptions_per_page' => -1, 'subscription_status' => array('wc-active', 'wc-on-hold') );
+    $subscriptions = wcs_get_subscriptions( $get_subscriptions_args );
     
     foreach ($subscriptions as $item_id => $subscription) 
     {
@@ -629,41 +631,68 @@ function cyberIdGuard_subscription_discrepency_fix()
                 {
                     $sfLicenseStatus = $licenseArray['GIDLicenseInfo']['GIDLicense']['LicenseStatus'];
 
-                    $invalidLicenseKey = "Strikeforce API reports: " . $sfLicenseStatus . ".";
+                    //$invalidLicenseKey = "Strikeforce API reports: " . $sfLicenseStatus . ".";
 
                     $cbidLicenseStatus = $subscription->get_status();
 
-                    switch($sfLicenseStatus)
+                    switch($cbidLicenseStatus)
                     {
-                        case 'Suspended':
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Issued')) 
+                        case 'on-hold':
+                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspended')) 
                             {   
-                                $returnedValue = $subscription->set_status('on-hold');
+                                $subscriptionDiscrepencyUpdate = 'Detected a license status discrepancy. License status updated.';
 
-                                $subscription->save();
+                                $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], $subscriptionDiscrepencyUpdate);
+                                
+                                // If you don't have the WC_Order object (from a dynamic $order_id)
+                                $order = wc_get_order(  $item_id );
+
+                                // The text for the note
+                                $note = __($subscriptionDiscrepencyUpdate);
+
+                                // Add the note
+                                $subscription->add_order_note( $note );
+
+                                //$returnedValue = $subscription->set_status('on-hold'); //UPDATE API to cbidLicenseStatus
+                                //$subscription->save();
                             }
                             
                         break;
-                        case 'Issued':
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Suspended')) 
+                        case 'active':
+                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Issued')) 
                             {   
-                                $returnedValue = $subscription->set_status('active');
+                                $subscriptionDiscrepencyUpdate = 'Detected a license status discrepancy. License status updated.';
 
-                                $subscription->save();
+                                $enableResponse = (array) $guardedIdApi->enableLicense($orderNumber, $item['License'], 'Discrepancy Alert. Attempting to fix discrepancy.');
+
+                                // If you don't have the WC_Order object (from a dynamic $order_id)
+                                $order = wc_get_order(  $item['id'] );
+
+                                // The text for the note
+                                $note = __($subscriptionDiscrepencyUpdate);
+
+                                // Add the note
+                                $order->add_order_note( $note );
+
+                                //$returnedValue = $subscription->set_status('active');
+                                //$subscription->save();
                             }
             
                         break;
                         default:
                             if (!empty($subscription->get_id() && $sfLicenseStatus != 'Issued')) 
                             {   
-                                $returnedValue = $subscription->set_status('on-hold');
-
-                                $subscription->save();
+                                
+                                $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Detected a license status discrepancy. License status updated.');
+                                
+                                //$returnedValue = $subscription->set_status('on-hold');
+                                //$subscription->save();
                             }
                     }
                 }
             
-            }else{
+            }
+            else{
 
                 echo '<p class="form-field form-field-wide">';
                     
