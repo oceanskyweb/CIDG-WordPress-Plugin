@@ -1,7 +1,5 @@
 <?php
 
-require_once( '/Applications/MAMP/htdocs/CyberIDGuard/wp-content/plugins/woocommerce-subscriptions/wcs-functions.php' );
-
 /**
  * Add the new tab to product data
  * @see     https://github.com/woocommerce/woocommerce/blob/e1a82a412773c932e76b855a97bd5ce9dedf9c44/includes/admin/meta-boxes/class-wc-meta-box-product-data.php
