@@ -1,5 +1,7 @@
 <?php
 
+require_once( '/Applications/MAMP/htdocs/CyberIDGuard/wp-content/plugins/woocommerce-subscriptions/wcs-functions.php' );
+
 /**
  * Add the new tab to product data
  * @see     https://github.com/woocommerce/woocommerce/blob/e1a82a412773c932e76b855a97bd5ce9dedf9c44/includes/admin/meta-boxes/class-wc-meta-box-product-data.php
@@ -577,7 +579,18 @@ wp_unschedule_event ($timestamp, 'cidg_strikeforce_discrepency_cron_job15');
 register_deactivation_hook (__FILE__, 'cronstarter_deactivate');
 
 
+function cyberIdGuard_subscription_discrepency_fix_test()
+{
+    $args = array(
+        'numberposts' => 10,
+        'post_type'   => 'shop_subscription',
+        'post_status' => array('active', 'on-hold')
+      );
+       
+      return $subscriptions = get_posts( $args );
+}
 
+print_r(cyberIdGuard_subscription_discrepency_fix_test());
 
 add_action('cidg_strikeforce_discrepency_cron_job15', 'cyberIdGuard_subscription_discrepency_fix');
 
@@ -586,7 +599,8 @@ function cyberIdGuard_subscription_discrepency_fix()
     $time = time();
     
     // Get All Active and On Hold Subscriptions
-    $get_subscriptions_args = array( 'subscriptions_per_page' => -1, 'subscription_status' => array('wc-active', 'wc-on-hold') );
+    $get_subscriptions_args = array( 'subscriptions_per_page' => -1, 'subscription_status' => array('active', 'on-hold') );
+    
     $subscriptions = wcs_get_subscriptions( $get_subscriptions_args );
     
     foreach ($subscriptions as $item_id => $subscription) 
@@ -680,17 +694,48 @@ function cyberIdGuard_subscription_discrepency_fix()
             
                         break;
                         default:
-                            if (!empty($subscription->get_id() && $sfLicenseStatus != 'Issued')) 
+                            if (!empty($subscription->get_id())) 
                             {   
+                                $subscriptionDiscrepencyUpdate = ('There was a problem with this license.');
                                 
-                                $enableResponse = (array) $guardedIdApi->SuspendLicense($orderNumber, $item['License'], 'Detected a license status discrepancy. License status updated.');
+                                // If you don't have the WC_Order object (from a dynamic $order_id)
+                                $order = wc_get_order(  $item['id'] );
+
+                                // The text for the note
+                                $note = __($subscriptionDiscrepencyUpdate);
+
+                                // Add the note
+                                $order->add_order_note( $note );
+
+                            }
+                            elseif ($sfLicenseStatus != 'Issued') 
+                            {   
+                                $subscriptionDiscrepencyUpdate = ('Detected an issue: License is not issued.');
                                 
-                                //$returnedValue = $subscription->set_status('on-hold');
-                                //$subscription->save();
+                                // If you don't have the WC_Order object (from a dynamic $order_id)
+                                $order = wc_get_order(  $item['id'] );
+
+                                // The text for the note
+                                $note = __($subscriptionDiscrepencyUpdate);
+
+                                // Add the note
+                                $order->add_order_note( $note );
+                            }
+                            else
+                            {   
+                                $subscriptionDiscrepencyUpdate = ('Detected an issue: unknown');
+                                
+                                // If you don't have the WC_Order object (from a dynamic $order_id)
+                                $order = wc_get_order(  $item['id'] );
+
+                                // The text for the note
+                                $note = __($subscriptionDiscrepencyUpdate);
+
+                                // Add the note
+                                $order->add_order_note( $note );
                             }
                     }
                 }
-            
             }
             else{
 
