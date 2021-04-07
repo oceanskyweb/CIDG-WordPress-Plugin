@@ -577,18 +577,18 @@ wp_unschedule_event ($timestamp, 'cidg_strikeforce_discrepency_cron_job15');
 register_deactivation_hook (__FILE__, 'cronstarter_deactivate');
 
 
-function cyberIdGuard_subscription_discrepency_fix_test()
-{
-    $args = array(
-        'numberposts' => 10,
-        'post_type'   => 'shop_subscription',
-        'post_status' => array('active', 'on-hold')
-      );
+// function cyberIdGuard_subscription_discrepency_fix_test()
+// {
+//     $args = array(
+//         'numberposts' => 10,
+//         'post_type'   => 'shop_subscription',
+//         'post_status' => array('active', 'on-hold')
+//       );
        
-      return $subscriptions = get_posts( $args );
-}
+//       return $subscriptions = get_posts( $args );
+// }
 
-print_r(cyberIdGuard_subscription_discrepency_fix_test());
+// print_r(cyberIdGuard_subscription_discrepency_fix_test());
 
 add_action('cidg_strikeforce_discrepency_cron_job15', 'cyberIdGuard_subscription_discrepency_fix');
 
